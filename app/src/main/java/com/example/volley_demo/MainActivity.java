@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -76,7 +78,24 @@ public class MainActivity extends AppCompatActivity {
 
        }
        else {
-           finish();
+
+           AlertDialog.Builder builder = new AlertDialog.Builder(this);
+           builder.setTitle("Error.....!");
+           builder.setMessage("Connect your Internet.");
+    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialogInterface, int i) {
+
+        }
+    });
+           builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+               @Override
+               public void onClick(DialogInterface dialogInterface, int i)
+               {
+                   finish();
+               }
+           });
+           builder.show();
        }
     }
 
